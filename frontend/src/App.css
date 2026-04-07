@@ -23,7 +23,6 @@ body {
   gap: 1.5rem;
 }
 
-/* Header */
 .header {
   display: flex;
   align-items: center;
@@ -55,7 +54,6 @@ body {
   margin-top: 0.2rem;
 }
 
-/* Card */
 .card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -67,7 +65,6 @@ body {
   box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
 }
 
-/* Dropzone */
 .dropzone {
   border: 2px dashed #cbd5e1;
   border-radius: 12px;
@@ -117,7 +114,6 @@ body {
   text-underline-offset: 2px;
 }
 
-/* Preview */
 .preview {
   display: flex;
   flex-direction: column;
@@ -155,7 +151,6 @@ body {
   color: #64748b;
 }
 
-/* Format section */
 .format-section {
   display: flex;
   flex-direction: column;
@@ -200,7 +195,6 @@ body {
   color: #fff;
 }
 
-/* Alerts */
 .alert {
   padding: 0.7rem 1rem;
   border-radius: 8px;
@@ -219,7 +213,6 @@ body {
   color: #86efac;
 }
 
-/* Buttons */
 .convert-btn {
   padding: 0.85rem;
   background: #4f46e5;
@@ -261,7 +254,6 @@ body {
   border-color: #cbd5e1;
 }
 
-/* Loading spinner */
 .loading-text {
   display: flex;
   align-items: center;

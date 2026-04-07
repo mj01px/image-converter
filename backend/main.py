@@ -31,11 +31,9 @@ EXTENSIONS = {
     "BMP": "bmp",
 }
 
-
 @app.get("/formats")
 def get_formats():
     return {"formats": SUPPORTED_FORMATS}
-
 
 @app.post("/convert")
 async def convert_image(
@@ -57,7 +55,6 @@ async def convert_image(
         content = await file.read()
         image = Image.open(io.BytesIO(content))
 
-        # JPEG não suporta transparência — converte para RGB
         if target_format == "JPEG" and image.mode in ("RGBA", "P", "LA"):
             image = image.convert("RGB")
 

@@ -93,7 +93,6 @@ export default function App() {
       </header>
 
       <main className="card">
-        {/* Drop zone */}
         <div
           className={`dropzone ${dragging ? 'dragging' : ''} ${file ? 'has-file' : ''}`}
           onDrop={handleDrop}
@@ -133,7 +132,6 @@ export default function App() {
           )}
         </div>
 
-        {/* Format selector */}
         <div className="format-section">
           <label className="section-label">Converter para</label>
           <div className="format-buttons">
@@ -149,11 +147,9 @@ export default function App() {
           </div>
         </div>
 
-        {/* Feedback */}
         {error && <div className="alert alert-error">{error}</div>}
         {success && <div className="alert alert-success">Imagem convertida e baixada com sucesso!</div>}
 
-        {/* Convert button */}
         <button
           className="convert-btn"
           onClick={handleConvert}
