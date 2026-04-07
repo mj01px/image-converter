@@ -14,6 +14,7 @@ app.add_middleware(
 )
 
 SUPPORTED_FORMATS = ["PNG", "JPEG", "WEBP", "GIF", "BMP"]
+MAX_FILE_SIZE = 10 * 1024 * 1024
 
 MEDIA_TYPES = {
     "PNG": "image/png",
@@ -53,6 +54,9 @@ async def convert_image(
 
     try:
         content = await file.read()
+
+        if len(content) > MAX_FILE_SIZE:
+            raise HTTPException(status_code=413, detail="Arquivo muito grande. Limite de 10MB.")
         image = Image.open(io.BytesIO(content))
 
         if target_format == "JPEG" and image.mode in ("RGBA", "P", "LA"):

@@ -16,6 +16,7 @@ export default function App() {
   const [error, setError] = useState(null)
   const [success, setSuccess] = useState(false)
   const [dragging, setDragging] = useState(false)
+  const [dimensions, setDimensions] = useState(null)
   const inputRef = useRef()
 
   const handleFile = (f) => {
@@ -26,9 +27,15 @@ export default function App() {
     }
     setError(null)
     setSuccess(false)
+    setDimensions(null)
     if (preview) URL.revokeObjectURL(preview)
+    const objectUrl = URL.createObjectURL(f)
     setFile(f)
-    setPreview(URL.createObjectURL(f))
+    setPreview(objectUrl)
+
+    const img = new Image()
+    img.onload = () => setDimensions({ w: img.naturalWidth, h: img.naturalHeight })
+    img.src = objectUrl
   }
 
   const handleDrop = useCallback((e) => {
@@ -114,6 +121,7 @@ export default function App() {
                 <span className="file-name">{file.name}</span>
                 <span className="file-meta">
                   {formatFileSize(file.size)} &middot; {currentFormat}
+                  {dimensions && ` · ${dimensions.w}×${dimensions.h}px`}
                 </span>
               </div>
             </div>
@@ -168,7 +176,7 @@ export default function App() {
         {file && (
           <button
             className="clear-btn"
-            onClick={() => { setFile(null); setPreview(null); setError(null); setSuccess(false) }}
+            onClick={() => { setFile(null); setPreview(null); setError(null); setSuccess(false); setDimensions(null) }}
           >
             Limpar
           </button>
